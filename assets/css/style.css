@@ -54,7 +54,8 @@ html {
 }
 
 .task-list {
-    width: 50%;
+    width: 85%;
+    max-width: 760.5px;
     margin: auto;
     margin-top: 3rem;
     display: flex;
@@ -66,7 +67,7 @@ html {
     display: flex;
     align-items: center;
     gap: .5rem;
-    border-bottom: .5px solid var(--primary-green);
+    border-bottom: 2px solid var(--secundary-green);
     padding: .7rem;
 }
 
