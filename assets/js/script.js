@@ -19,6 +19,8 @@ function addTask() {
         addedTask.appendChild(addedTaskName)
         addedTask.appendChild(remove)
         taskList.appendChild(addedTask)
+
+        task.value = ""
     }
 
 }
@@ -46,7 +48,9 @@ task.addEventListener("keypress", e => {
         addedTask.appendChild(checkbox)
         addedTask.appendChild(addedTaskName)
         addedTask.appendChild(remove)
-        taskList.appendChild(addedTask)        
+        taskList.appendChild(addedTask)     
+        
+        task.value = ""
     }
 })
 
