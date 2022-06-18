@@ -1,5 +1,7 @@
 const task = document.querySelector('.task-input')
 const taskAddBtn = document.querySelector('.task-add-button')
+const taskList = document.querySelector('.task-list')
+const taskOptions = document.querySelector('.task-options')
 
 taskAddBtn.addEventListener("click", () => {
     if (task.value != "") {
@@ -26,9 +28,7 @@ function addTask() {
     remove.classList.add('remove')
 
     addedTaskName.setAttribute('for', `checkbox${count}`)
-    addedTaskName.innerHTML = task.value   
-
-    const taskList = document.querySelector('.task-list')
+    addedTaskName.innerHTML = task.value 
 
     addedTask.appendChild(checkbox)
     addedTask.appendChild(addedTaskName)
@@ -36,6 +36,9 @@ function addTask() {
     taskList.appendChild(addedTask)
 
     task.value = ""
+
+    taskOptions.style.display = "flex"
+
     count += 1
 }
 
@@ -44,7 +47,8 @@ function removeTask(e) {
     const removeButton = e.target.className
     if (removeButton === 'remove') {
         const removedTask = e.target.parentElement    
-        removedTask.style.display = "none"        
+        // removedTask.style.display = "none"
+        removedTask.remove()        
     }     
 }
 
@@ -57,16 +61,34 @@ const clearAllBtn = document.getElementById('clear-all')
 const checkAllBtn = document.getElementById('check-all')
 const allTasks = document.getElementsByTagName('li')
 
-clearAllBtn.addEventListener("click", () => {
-    for (let i = 0; i < allTasks.length; i++) {
-        allTasks[i].style.display = "none"       
+clearAllBtn.addEventListener("click", () => { 
+    while (allTasks.length > 0) {
+        allTasks[0].remove()    
     }
 })
 
-checkAllBtn.addEventListener("click", () => {
+let checkedTasks = false
+checkAllBtn.addEventListener("click", () => {    
     const checkboxes = document.getElementsByClassName('checkbox')
-    // const labels = document.getElementsByTagName('label')
-    for (let i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].setAttribute("checked", "")        
+
+    if (checkedTasks === false) {        
+        for (let i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = true
+        }
+
+        checkAllBtn.innerHTML = "Desmarcar todas as tarefas"
+    } else {
+        for (let i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = false
+        }
+
+        checkAllBtn.innerHTML = "Marcar todas as tarefas"
     }
+
+    checkedTasks = !checkedTasks
 })
+
+
+if (allTasks.length === 0) {
+    taskOptions.style.display = "none"
+}
