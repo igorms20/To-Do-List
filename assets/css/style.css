@@ -110,6 +110,10 @@ body {
     display: none;
 }
 
+.task-list li span {
+    cursor: pointer;
+}
+
 .task-list li.checked span {
     text-decoration: line-through;
     opacity: 0.7;
