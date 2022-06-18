@@ -65,7 +65,7 @@ body {
     width: 85%;
     max-width: 760.5px;
     margin: auto;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
     display: flex;
     flex-direction: column-reverse;
     gap: .6rem;
@@ -106,17 +106,35 @@ body {
     display: inline-block;
 }
 
-.task-list li.removed {
-    display: none;
-}
-
-.task-list li span {
+.task-list li label {
     cursor: pointer;
 }
 
-.task-list li.checked span {
+.task-list li input:checked + label {
     text-decoration: line-through;
     opacity: 0.7;
+}
+
+.task-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    max-width: 320px;
+    margin: 1rem auto 1.7rem;
+}
+
+.task-options span {
+    background-color: var(--primary-green);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.task-options span:hover {
+    background-color: #007e43;
 }
 
 @media (max-width: 600px) {
